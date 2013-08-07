@@ -38,7 +38,7 @@ module Rack
         stop = Time.now and log(env, (stop-start).seconds, size_before, html.size) if @bench
 
         headers['Content-Length'] = html.size.to_s
-        headers['Html-Mini'] = "version #{HtmlMini::VERSION}, time #{(stop-start).seconds}s, size #{html.size-size_before} bytes" if @bench
+        headers['X-Html-Mini'] = "version #{HtmlMini::VERSION}, time #{(stop-start).seconds}s, size #{html.size-size_before} bytes" if @bench
 
         response = [html] unless html.nil?
       end
